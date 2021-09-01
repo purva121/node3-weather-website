@@ -14,12 +14,16 @@ const forecast = (latitude, longitude, callback) => {
     } else if (body.error) {
       callback("Unable to find location. Try another search!", undefined);
     } else {
+      //console.log(body.daily[0].temp);
       callback(
         undefined,
         body.daily[0].weather[0].description +
           ". It is currently " +
           body.current.temp +
-          " degress out."
+          " degress out.The high today is " +
+          body.daily[0].temp.max +
+          " with a low of " +
+          body.daily[0].temp.min + "."
       );
     }
   });
